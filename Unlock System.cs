@@ -37,48 +37,4 @@ namespace Mod
             }
         }
     }
-    
-    public class UnlockOnKill : MonoBehaviour //this is a component i would attach to things and define the key to unlock things, amazing
-    {
-        public bool IsBluntWeapon = true;
-        public string UnlockableKey;
-
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            var limb = collision.gameObject.GetComponent<LimbBehaviour>();
-
-            if (limb && !limb.IsConsideredAlive && IsBluntWeapon)
-                UnlockManager.Unlock(UnlockableKey);
-        }
-
-        private void Use()
-        {
-            if (IsBluntWeapon) return;
-
-            var firearm = GetComponent<FirearmBehaviour>();
-            var projectileLauncher = GetComponent<ProjectileLauncherBehaviour>();
-            var objectLayer = LayerMask.GetMask("Objects");
-
-            if (firearm)
-            {
-                var hit = Physics2D.Raycast(firearm.BarrelPosition, firearm.BarrelDirection, Mathf.Infinity, objectLayer);
-                var limb = hit.transform.GetComponent<LimbBehaviour>();
-
-                if (limb && !limb.IsConsideredAlive)
-                    UnlockManager.Unlock(UnlockableKey);
-            }
-            else if (projectileLauncher)
-            {
-                var hit = Physics2D.Raycast(projectileLauncher.GetBarrelPosition(), projectileLauncher.GetBarrelDirection(), Mathf.Infinity, objectLayer);
-                var limb = hit.transform.GetComponent<LimbBehaviour>();
-
-                if (limb && !limb.IsConsideredAlive)
-                    UnlockManager.Unlock(UnlockableKey);
-            }
-            else
-            {
-                ModAPI.Notify("if you see this, it's because i didn't implement enough fail-safes, and never checked this.");
-            }
-        }
-    }
 }
