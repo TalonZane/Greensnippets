@@ -38,7 +38,7 @@ namespace Mod
                     message = ". Nice one, dumby.";
                 } else if(PlayerPrefs.GetInt("UnlockedItems", 0) == (UnlockManager.Unlockables.Count))
                 {
-                    message = ". You've 100% the mod! Thank you for playing, and I hope you enjoyed what it had to offer.";
+                    message = "! You've 100% the mod! Thank you for playing, and I hope you enjoyed what it had to offer.";
                 } else if(PlayerPrefs.GetInt("UnlockedItems", 0) >= (UnlockManager.Unlockables.Count / 2))
                 {
                     message = ". You're over half-way!";
@@ -49,8 +49,6 @@ namespace Mod
                 }
 
                 ModAPI.Notify(PlayerPrefs.GetInt("UnlockedItems", 0) + "/" + UnlockManager.Unlockables.Count + message);
-
-                UnlockManager.Unlock("Participation Award");
             }));
 
             this.GetComponent<PhysicalBehaviour>().ContextMenuOptions.Buttons.Add(new ContextMenuButton("unlock", "Unlock All Items", "Cheat?", () =>
