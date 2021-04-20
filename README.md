@@ -10,3 +10,8 @@ I hope everyone supports my decison to move on and begin work on possible games 
 Make me proud! -TZ
 
 <3
+
+
+4/20/21 - yeah so that was a complete lie lol
+
+this repository will be updated with certain mods i feel deserve in the public eye, please disregard all old/bad code because im not fixing it >:D
